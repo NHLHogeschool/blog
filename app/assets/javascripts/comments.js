@@ -9,18 +9,22 @@ window.comments = new Comments();
 comments.fetch();
 
 var CommentView = Backbone.View.extend({
+  tagName: 'article',
+
   initialize: function() {
     this.model.on('change', this.render, this);
   },
 
   render: function() {
-    this.$el.html('<article>' + this.model.get('body') + '</article>');
+    this.$el.html(this.model.get('body'));
 
     return this;
   }
 })
 
 var CommentsView = Backbone.View.extend({
+  tagName: 'section',
+
   initialize: function() {
     this.collection.on('reset', this.render, this);
   },
