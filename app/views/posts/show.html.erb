@@ -7,14 +7,4 @@
 
 <h3>Reacties</h3>
 
-<%= form_for [@post, @post.comments.new] do |f| %>
-  <p>
-    <%= f.label :body, 'Reactie:' %>
-    <%= f.text_area :body %>
-  </p>
-  <p><%= f.submit 'Reageer!' %></p>
-<% end %>
-
-<% for comment in @post.comments %>
-  <%= simple_format comment.body %>
-<% end %>
+<div id='comments'>Comments loading...</div>
