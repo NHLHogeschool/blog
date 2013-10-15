@@ -1,3 +1,5 @@
+<div id='posts-container', data-posts='<%= @posts.to_json %>'></div>
+
 <% @posts.each do |post| %>
   <article>
     <h2><%= link_to post.title, post %></h2>

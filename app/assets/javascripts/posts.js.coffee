@@ -1,3 +1,29 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$ ->
+  return true
+
+  posts = $('#posts-container').data('posts')
+  $('body').empty()
+  for post in posts
+    link = $('<a/>').attr({href: "/posts/#{post.id}.json"}).html(post.title)
+    paragraph = $('<p/>').html link
+
+    link.on 'click', (evt) ->
+      evt.preventDefault()
+      $.getJSON this.href, (post) =>
+        $(this).after $('<p/>').html(post.body)
+
+    $('body').append paragraph
+
+  # $.getJSON '/posts.json', (posts) ->
+  #   $('body').empty()
+  #   for post in posts
+  #     link = $('<a/>').attr({href: "/posts/#{post.id}.json"}).html(post.title)
+  #     paragraph = $('<p/>').html link
+
+  #     link.on 'click', (evt) ->
+  #       evt.preventDefault()
+  #       $.getJSON this.href, (post) =>
+  #         $(this).after $('<p/>').html(post.body)
+
+  #     $('body').append paragraph
+
